@@ -12,6 +12,7 @@ Bundle "tpope/vim-vinegar"
 Bundle "chriskempson/base16-vim"
 Bundle "noahfrederick/vim-hemisu"
 Bundle "whatyouhide/vim-gotham"
+Bundle "altercation/vim-colors-solarized"
 
 " Syntax Extensions:
 Bundle "kchmck/vim-coffee-script"
