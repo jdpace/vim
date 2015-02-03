@@ -38,6 +38,9 @@ nnoremap <leader>r :Dispatch<CR>
 " Run GitHub tests
 nnoremap <leader>gr :Dispatch testrb %<CR>
 
+" jj for Esc
+imap jj <Esc>
+
 " <leader>W - remove trailing whitespace
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>> :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
