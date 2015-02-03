@@ -110,6 +110,10 @@ set hidden
 " Show line wraps with fancy action
 set showbreak=↪
 
+" Show hidden characters
+set list
+set listchars=tab:▸\ ,trail:·
+
 " Help Program: Use vim help instead of language specific for shift-k
 set keywordprg=:help
 
