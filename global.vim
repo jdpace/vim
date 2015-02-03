@@ -28,13 +28,13 @@ set noswapfile
 set vb t_vb=
 
 " Set to auto read when a file is changed from the outside
-set autoread                            
+set autoread
 
 " We're on the fastest TTY ever
 set ttyfast
 
 " Also match angle brackets
-set matchpairs+=<:>       
+set matchpairs+=<:>
 
 
 " Undo Configuration:
@@ -57,7 +57,7 @@ set infercase
 set completeopt=menuone,preview
 
 " When more than one match, list all matches and complete first match.
-set wildmode=list:full    
+set wildmode=list:full
 
 " Mouse:
 
