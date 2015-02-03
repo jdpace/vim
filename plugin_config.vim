@@ -47,3 +47,7 @@ let g:ctrlp_use_caching = 1
 let g:ctrlp_switch_buffer = 'ET'
 
 " let g:ctrlp_regexp = 1
+
+" Increase max files found by CtrlP
+" Default is 10,000
+let g:ctrlp_max_files = 50000
