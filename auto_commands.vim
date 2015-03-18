@@ -7,3 +7,17 @@ autocmd BufRead,BufNewFile {*.hbs}                                              
 
 " Resize splits when the window is resized
 autocmd VimResized * exe "normal! \<c-w>="
+
+" Strip trailing whitespace, and remember cursor position
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+" Delete trailing whitespace on save
+autocmd BufWritePre {*.rb,*.js,*.coffee} :call <SID>StripTrailingWhitespaces()
+
+" Invoke a bang command to let autoread work consistently in console/tmux
+autocmd FocusGained,BufEnter * :silent! !

@@ -20,6 +20,7 @@ nnoremap <leader>lc :CtrlP<cr>
 nnoremap <leader>lf :CtrlP<cr>
 nnoremap <leader>lb :CtrlPBuffer<cr>
 nnoremap <leader>lt :CtrlPTag<cr>
+nnoremap <C-l> :CtrlPMRUFiles<CR>
 
 nnoremap K :Ag <C-R><C-W><CR>
 
@@ -38,9 +39,5 @@ nnoremap <leader>r :Dispatch<CR>
 " Run GitHub tests
 nnoremap <leader>gr :Dispatch testrb %<CR>
 
-" jj for Esc
+" Let us use jj to esc
 imap jj <Esc>
-
-" <leader>W - remove trailing whitespace
-nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-nnoremap <leader>> :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>

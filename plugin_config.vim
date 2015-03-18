@@ -8,45 +8,74 @@ let g:rails_statusline=0
 " Screen IMPL
 let g:ScreenImpl = 'Tmux'
 
-set tags=./.tags;,./tags
+" " <TAB>: completion.
+" inoremap <expr><TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
+" function! s:check_back_space()"{{{
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1] =~ '\s'
+" endfunction"}}
 
-" Neocompletioncache:
 
-" Disable AutoComplPop.
+" CtrlP:
+" ctrl-t opens in new tab
+let g:ctrlp_switch_buffer = 'T'
 
-" Disable the automatic completion
-let g:neocomplcache_disable_auto_complete = 1
+" Use ctrlp-cmatcher to find files
+let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 
-let g:neocomplcache_enable_at_startup = 1
-" let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_smart_case = 1
-" let g:neocomplcache_enable_underbar_completion = 1
-" let g:neocomplcache_enable_auto_delimiter = 1
-let g:neocomplcache_max_list = 15
-" let g:neocomplcache_force_overwrite_completefunc = 1
+" ==================== CtrlP ====================
+let g:ctrlp_extensions = ['tag']
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\.git$\|\.hg$\|\.svn$',
+    \ 'file': '\.exe$\|\.so$\|\.dll$' }
 
-" <TAB>: completion.
+let g:ctrlp_user_command = {
+    \ 'types': {
+        \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+    \ }
+\ }
+
+
+" TabCompletion:
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
 function! s:check_back_space()"{{{
   let col = col('.') - 1
   return !col || getline('.')[col - 1] =~ '\s'
 endfunction"}}
 
+" NeoComplCache:
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+let g:neocomplcache_disable_auto_complete = 1
 
-" CtrlP:
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_auto_delimiter = 1
+let g:neocomplcache_max_list = 15
+let g:neocomplcache_force_overwrite_completefunc = 1
 
-" Silver surfer time
-let g:ctrlp_cache_dir = '/tmp/ctrlp'
- 
-let g:ctrlp_user_command = 'ag %s --nocolor -g ""'
+" Enable heavy omni completion.
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
 
-" ag is fast enough that CtrlP doesn't need to cache
-let g:ctrlp_use_caching = 1
+" Extra omnicomplete patterns
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
 
-" Open files in existing buffers, ctrl-t opens in new tab
-let g:ctrlp_switch_buffer = 'ET'
+" Let neocompl cache know what language includes look like
+let g:neocomplcache_include_patterns = {
+  \ 'cpp' : '^\s*#\s*include',
+  \ 'ruby' : '^\s*require',
+  \ }
 
-" Increase max files found by CtrlP
-" Default is 10,000
-let g:ctrlp_max_files = 50000
-let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+let g:neocomplcache_include_exprs = {
+  \ 'ruby' : substitute(v:fname,'::','/','g')
+  \ }
+
+let g:neocomplcache_include_suffixes = {
+  \ 'ruby' : '.rb',
+  \ 'haskell' : '.hs'
+  \ }
