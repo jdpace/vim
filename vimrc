@@ -11,3 +11,7 @@ if has("gui_running")
 else
   source ~/.vim/console_config.vim
 endif
+
+if filereadable($HOME . '/.vimrc.custom')
+  source ~/.vimrc.custom
+endif
