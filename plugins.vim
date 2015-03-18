@@ -56,4 +56,7 @@ Plug 'tpope/vim-surround'
 
 Plug 'gerw/vim-HiLinkTrace'
 
+" jdpace's plugins
+Plug 'altercation/vim-colors-solarized'
+
 call plug#end()
